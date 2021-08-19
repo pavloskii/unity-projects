@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 394159735}
   - component: {fileID: 394159737}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GlobalGameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc0e558300a92de44b1216fbc7113b46, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -747,7 +747,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b337b21bb4f15b549bfefb82e8611ab5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.261
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -990,6 +990,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &813542306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: bcf471273cc460644bee464d85b13464, type: 3}
+  m_PrefabInstance: {fileID: 188451689}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &813542307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: bcf471273cc460644bee464d85b13464, type: 3}
@@ -1199,7 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 1.5
-  PlayerDragon: {fileID: 0}
+  PlayerDragon: {fileID: 813542306}
 --- !u!65 &1276849690
 BoxCollider:
   m_ObjectHideFlags: 0
