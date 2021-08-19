@@ -11,40 +11,51 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(MoveSpeed * Time.deltaTime * Vector3.left);
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 270, 0);
+            Move(Vector3.left);
+            RotatePlayerOnYAxis(270);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(MoveSpeed * Time.deltaTime * Vector3.right);
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            Move(Vector3.right);
+            RotatePlayerOnYAxis(90);
 
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(MoveSpeed * Time.deltaTime * Vector3.forward);
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            Move(Vector3.forward);
+            RotatePlayerOnYAxis(0);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(MoveSpeed * Time.deltaTime * Vector3.back);
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            Move(Vector3.back);
+            RotatePlayerOnYAxis(180);
         }
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 45, 0);
+            RotatePlayerOnYAxis(45);
         }
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 135, 0);
+            RotatePlayerOnYAxis(135);
         }
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
         {
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 315, 0);
+            RotatePlayerOnYAxis(315);
         }
         if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
-            PlayerDragon.transform.localRotation = Quaternion.Euler(0, 225, 0);
+            RotatePlayerOnYAxis(225);
         }
+    }
+
+    private void RotatePlayerOnYAxis(float degrees)
+    {
+        PlayerDragon.transform.localRotation = Quaternion.Euler(0, degrees, 0);
+    }
+
+    private void Move(Vector3 direction)
+    {
+        transform.Translate(MoveSpeed * Time.deltaTime * direction);
+
     }
 }
