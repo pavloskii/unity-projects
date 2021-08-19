@@ -8,6 +8,7 @@ public class CoinCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            GlobalCoins.CointCount += 1;
             gameObject.SetActive(false);
         }
     }
