@@ -8,6 +8,6 @@ public class CoinRotation : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, RotateSpeed, 0, Space.World);
+        transform.Rotate(0, RotateSpeed * Time.timeScale, 0, Space.World);
     }
 }
