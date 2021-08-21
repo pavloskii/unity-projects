@@ -7,6 +7,7 @@ public class Respawning : MonoBehaviour
 {
     void Start()
     {
-        SceneManager.LoadScene(0);
+        GlobalCoins.CointCount = 0;
+        SceneManager.LoadScene(GlobalLevel.LevelNumber);
     }
 }

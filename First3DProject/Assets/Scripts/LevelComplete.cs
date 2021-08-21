@@ -29,5 +29,9 @@ public class LevelComplete : MonoBehaviour
         FadeOut.SetActive(true);
 
         yield return new WaitForSeconds(3);
+
+        GlobalLevel.LevelNumber += 1;
+        PlayerPrefs.SetInt("LevelLoadNum", GlobalLevel.LevelNumber);
+        SceneManager.LoadScene(2);
     }
 }
