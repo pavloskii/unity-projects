@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        GlobalLevel.LevelNumber = 3;
         SceneManager.LoadScene(GlobalLevel.LevelNumber);
     }
 
