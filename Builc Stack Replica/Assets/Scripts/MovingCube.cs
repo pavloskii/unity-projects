@@ -14,7 +14,7 @@ public class MovingCube : MonoBehaviour
     {
         if (LastCube == null)
         {
-            LastCube = GameObject.Find("StartCube").GetComponent<MovingCube>();
+            LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
         }
 
         CurrentCube = this;
@@ -31,7 +31,7 @@ public class MovingCube : MonoBehaviour
     {
         moveSpeed = 0;
         float hangover = GetHangover();
-        float max = MoveDirection == MoveDirection.z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
+        float max = MoveDirection == MoveDirection.Z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
         
         if (Mathf.Abs(hangover) >= max)
         {
@@ -41,7 +41,8 @@ public class MovingCube : MonoBehaviour
         }
 
         float direction = hangover > 0 ? 1f : -1f;
-        if (MoveDirection == MoveDirection.z)
+
+        if (MoveDirection == MoveDirection.Z)
         {
             SplitCubeOnZ(hangover, direction);
         }
@@ -55,7 +56,7 @@ public class MovingCube : MonoBehaviour
 
     private float GetHangover()
     {
-        if (MoveDirection == MoveDirection.z)
+        if (MoveDirection == MoveDirection.Z)
         {
             return transform.position.z - LastCube.transform.position.z;
         }
@@ -66,7 +67,8 @@ public class MovingCube : MonoBehaviour
     private void SplitCubeOnX(float hangover, float direction)
     {
         float newXSize = LastCube.transform.localScale.x - Mathf.Abs(hangover);
-        float fallingBlockSize = LastCube.transform.localScale.x - newXSize;
+        //Check if it is LastCube below
+        float fallingBlockSize = transform.localScale.x - newXSize;
 
         float newXPosition = LastCube.transform.position.x + (hangover / 2);
         transform.localScale = new Vector3(newXSize, transform.localScale.y, transform.localScale.z);
@@ -81,7 +83,8 @@ public class MovingCube : MonoBehaviour
     private void SplitCubeOnZ(float hangover, float direction)
     {
         float newZSize = LastCube.transform.localScale.z - Mathf.Abs(hangover);
-        float fallingBlockSize = LastCube.transform.localScale.z - newZSize;
+        //Check if it is LastCube below
+        float fallingBlockSize = transform.localScale.z - newZSize;
 
         float newZPosition = LastCube.transform.position.z + (hangover / 2);
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newZSize);
@@ -97,7 +100,7 @@ public class MovingCube : MonoBehaviour
     {
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-        if (MoveDirection == MoveDirection.z)
+        if (MoveDirection == MoveDirection.Z)
         {
             cube.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, fallingBlockSize);
             cube.transform.position = new Vector3(transform.position.x, transform.position.y, fallingBlockPosition);
@@ -115,13 +118,12 @@ public class MovingCube : MonoBehaviour
 
     private void Update()
     {
-        if (MoveDirection == MoveDirection.z)
+        if (MoveDirection == MoveDirection.Z)
         {
-            transform.position += moveSpeed * Time.deltaTime * transform.forward;
+            transform.position += transform.forward * Time.deltaTime * moveSpeed;
+            return;
         }
-        else
-        {
-            transform.position += moveSpeed * Time.deltaTime * transform.right;
-        }
+
+        transform.position += transform.right * Time.deltaTime * moveSpeed;
     }
 }

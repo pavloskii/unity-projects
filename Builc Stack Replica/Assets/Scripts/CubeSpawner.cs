@@ -12,10 +12,11 @@ public class CubeSpawner : MonoBehaviour
     {
         var cube = Instantiate(cubePrefab);
 
-        if (MovingCube.LastCube != null && MovingCube.LastCube.gameObject != GameObject.Find("StartCube"))
+        if (MovingCube.LastCube != null && MovingCube.LastCube.gameObject != GameObject.Find("Start"))
         {
-            float x = moveDirection == MoveDirection.x ? transform.position.x : MovingCube.LastCube.transform.position.x;
-            float z = moveDirection == MoveDirection.z ? transform.position.z : MovingCube.LastCube.transform.position.z;
+
+            float x = moveDirection == MoveDirection.X ? transform.position.x : MovingCube.LastCube.transform.position.x;
+            float z = moveDirection == MoveDirection.Z ? transform.position.z : MovingCube.LastCube.transform.position.z;
 
             cube.transform.position = new Vector3(
                 x,
