@@ -7,6 +7,7 @@ public class KillOnTouch : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            MovingBlock.Score = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
