@@ -14,8 +14,6 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField]
     private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField]
-    private Transform debugTransform;
-    [SerializeField]
     private Transform bulletProjectile;
     [SerializeField]
     private Transform spawnBulletPosition;
@@ -75,7 +73,6 @@ public class ThirdPersonShooterController : MonoBehaviour
         
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
         {
-            debugTransform.position = raycastHit.point;
             return raycastHit.point;
         }
         //this can be used for not putting collider walls
