@@ -65,6 +65,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         thirdPersonController.SetRotateOnMove(!aim);
     }
 
+    //Used for shooting projectile method
     private Vector3 GetAimTargetPosition()
     {
         //get center of the screen
